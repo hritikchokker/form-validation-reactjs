@@ -1,0 +1,17 @@
+.username-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.username-container > label {
+}
+.username-container > input {
+  height: 20px;
+  border-radius: 10px solid black;
+}
+.username-container > i {
+  position: absolute;
+  left: 320px;
+}
