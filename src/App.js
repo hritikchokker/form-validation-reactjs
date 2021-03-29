@@ -26,21 +26,28 @@ export default function App() {
       );
     });
   };
-
+  // <div className="username-container">
+  //     <label>Name </label>
+  //     <input
+  //       className="username"
+  //       value={userForm["userName"]}
+  //       onChange={event => setUserForm({ userName: event.target.value })}
+  //       type="text"
+  //       placeholder="name here"
+  //     />
+  //     {showCrossIcon("userName")}
+  //   </div>
+  const updateFormValue = val => {};
   return (
     <div>
       <form>
-        <div className="username-container">
-          <label>Name </label>
-          <input
-            className="username"
-            value={userForm["userName"]}
-            onChange={event => setUserForm({ userName: event.target.value })}
-            type="text"
-            placeholder="name here"
-          />
-          {showCrossIcon("userName")}
-        </div>
+        <InputField
+          fieldName="User Name"
+          onInputChange={event => userForm({ userName: event })}
+          placeholderVal="enter name here"
+          inputType="text"
+          validations={{ minLength: 3, maxLength: 25 }}
+        />
       </form>
       <h5>{showFormDetails()}</h5>
     </div>
