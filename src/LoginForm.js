@@ -7,7 +7,6 @@ export default function LoginForm() {
   });
   const changeHandler = event => {
     const { name, value } = event.target;
-
     // setUserForm({ userForm.name: value });
   };
   console.log(userForm, "user Form");
