@@ -13,9 +13,12 @@ export default function FormInput({
 }) {
   const [isElementFocused, setElemetFocus] = useState(false);
   const handleValidations = value => {
-    console.log(value, "vaslss", validations);
+    console.log(value, "vaslss");
     if (validations && isElementFocused) {
       const { minLength, maxLength, required } = validations;
+      if (!value) {
+        return <>{labelName} is Required</>;
+      }
       if (value && value.length < minLength) {
         return (
           <>
@@ -39,7 +42,7 @@ export default function FormInput({
         onChange={onChange}
         name={name}
       />
-      <p>{handleValidations(value)}</p>
+      <p className="error">{handleValidations(value)}</p>
     </>
   );
 }

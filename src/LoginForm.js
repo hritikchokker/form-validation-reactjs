@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "./FormInput";
 export default function LoginForm() {
-  const changeHandler = () => {};
+  const [userForm, setUserForm] = useState({
+    userName: "",
+    email: ""
+  });
+  const changeHandler = event => {
+    const { name, value } = event.target;
+
+    // setUserForm({ userForm.name: value });
+  };
+  console.log(userForm, "user Form");
   const validation = { minLength: 3, required: true, maxLength: 40 };
   return (
     <>
@@ -16,7 +25,7 @@ export default function LoginForm() {
             id=""
             className=""
             value=""
-            name="User Name"
+            name="userName"
           />
         </div>
         <div>
@@ -29,7 +38,7 @@ export default function LoginForm() {
             id=""
             className=""
             value=""
-            name="Email"
+            name="email"
           />
         </div>
       </form>
