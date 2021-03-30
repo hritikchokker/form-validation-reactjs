@@ -36,8 +36,10 @@ export default function FormInput({
         placeholder={placeholder}
         id={id}
         className={className}
-        onBlur={event => handleValidations(event.target.value)}
-        onFocus={event => setElemetFocus(true)}
+        // onBlur={event =>
+        //   setElementFocus(fale) && handleValidations(event.target.value)
+        // }
+        // onFocus={event => setElemetFocus(true)}
         value={value}
         onChange={onChange}
         name={name}
