@@ -8,24 +8,34 @@ export default function FormInput({
   validations,
   id,
   className,
+  autocomplete,
   value,
   name
 }) {
   const [isElementFocused, setElemetFocus] = useState(false);
-  const handleValidations = value => {
-    console.log(value, "vaslss");
-    if (validations && isElementFocused) {
-      const { minLength, maxLength, required } = validations;
-      if (!value) {
-        return <>{labelName} is Required</>;
-      }
-      if (value && value.length < minLength) {
-        return (
-          <>
-            {labelName} should be atleast {minLength}
-          </>
-        );
-      }
+  const handleValidations = () => {
+    const { minLength, maxLength, required, regex } = validations;
+    let regTest;
+    if (regex) {
+      regTest = new RegExp(regex);
+    }
+    console.log(regTest && regTest.test(value), "tes");
+    if (value && value.length > maxLength) {
+      return (
+        <>
+          {labelName} should be less than {maxLength}
+        </>
+      );
+    } else if (value && value.length <= minLength) {
+      return (
+        <>
+          {labelName} should be greater than {minLength}
+        </>
+      );
+    } else if (regTest && regTest.test(value)) {
+      return <>{labelName} is not a valid</>;
+    } else {
+      return <></>;
     }
   };
   return (
@@ -36,6 +46,7 @@ export default function FormInput({
         placeholder={placeholder}
         id={id}
         className={className}
+        autocomplete={autocomplete}
         // onBlur={event =>
         //   setElementFocus(fale) && handleValidations(event.target.value)
         // }
@@ -44,7 +55,7 @@ export default function FormInput({
         onChange={onChange}
         name={name}
       />
-      <p className="error">{handleValidations(value)}</p>
+      <p className="error">{handleValidations()}</p>
     </>
   );
 }
